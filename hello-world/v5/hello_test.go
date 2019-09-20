@@ -2,7 +2,7 @@ package main
 
 import "testing"
 
-func HelloTest(t *testing.T) {
+func TestHello(t *testing.T) {
 	assertFunc := func(t *testing.T, got, want string) {
 		t.Helper()
 		if got != want {

@@ -2,27 +2,22 @@ package main
 
 import "testing"
 
-func TestHello(t *testing.T) {
-
-	assertCorrectMessage := func(t *testing.T, got, want string) {
-		/* t.Helper() is needed to tell the test suite that this method is a helper.
-		By doing this when it fails the line number reported will be in our function call rather than inside our test helper */
+func HelloTest(t *testing.T) {
+	assertFunc := func(t *testing.T, got, want string) {
 		t.Helper()
 		if got != want {
-			t.Errorf("got %q want %q", got, want)
+			t.Errorf("\ngot:%v\nwant:%v", got, want)
 		}
 	}
-
-	t.Run("saying hello to people", func(t *testing.T) {
-		got := Hello("Chris")
-		want := "Hello, Chri"
-		assertCorrectMessage(t, got, want)
-	})
-
-	t.Run("empty string defaults to 'world'", func(t *testing.T) {
+	t.Run("If no args are passed, result should be Hello World!", func(t *testing.T) {
 		got := Hello("")
-		want := "Hello, World"
-		assertCorrectMessage(t, got, want)
+		want := "Hello World!"
+		assertFunc(t, got, want)
+	})
+	t.Run("If no args are passed, result should be Hello Serkan!", func(t *testing.T) {
+		got := Hello("Serkan")
+		want := "Hello Serkan!"
+		assertFunc(t, got, want)
 	})
 
 }

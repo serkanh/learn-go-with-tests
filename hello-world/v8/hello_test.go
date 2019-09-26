@@ -3,36 +3,25 @@ package main
 import "testing"
 
 func TestHello(t *testing.T) {
-
-	assertCorrectMessage := func(t *testing.T, got, want string) {
+	assertFunc := func(got, want string) {
 		t.Helper()
 		if got != want {
-			t.Errorf("got %q want %q", got, want)
+			t.Errorf("\ngot: %v\nwant: %v", got, want)
 		}
 	}
-
-	t.Run("to a person", func(t *testing.T) {
-		got := Hello("Chris", "")
-		want := "Hello, Chris"
-		assertCorrectMessage(t, got, want)
-	})
-
-	t.Run("empty string", func(t *testing.T) {
+	t.Run("If no name and lang passed as an argument, language should default to spanish and name should default World", func(t *testing.T) {
 		got := Hello("", "")
-		want := "Hello, World"
-		assertCorrectMessage(t, got, want)
+		want := "Hello World"
+		assertFunc(got, want)
 	})
-
-	t.Run("in Spanish", func(t *testing.T) {
-		got := Hello("Elodie", spanish)
-		want := "Hola, Elodie"
-		assertCorrectMessage(t, got, want)
+	t.Run("If only name param is passed it should return by defaulting to English and name passed", func(t *testing.T) {
+		got := Hello("", "Serkan")
+		want := "Hello Serkan"
+		assertFunc(got, want)
 	})
-
-	t.Run("in French", func(t *testing.T) {
-		got := Hello("Lauren", french)
-		want := "Bonjour, Lauren"
-		assertCorrectMessage(t, got, want)
+	t.Run("If name param and spanish is passed it should return Hola Serkan", func(t *testing.T) {
+		got := Hello("spanish", "Serkan")
+		want := "Hola Serkan"
+		assertFunc(got, want)
 	})
-
 }

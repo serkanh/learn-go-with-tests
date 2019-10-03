@@ -1,12 +1,20 @@
 package iteration
 
-import "testing"
+import (
+	"fmt"
+	"testing"
+)
 
 func TestRepeat(t *testing.T) {
-	repeated := Repeat("a")
-	expected := "aaaaa"
-
-	if repeated != expected {
-		t.Errorf("expected %q but got %q", expected, repeated)
+	got := Repeat("a")
+	want := "aaaaa"
+	if got != want {
+		t.Errorf("got: %v\nwant: %v", got, want)
 	}
+}
+
+func ExampleRepeat() {
+	got := Repeat("a")
+	fmt.Println(got)
+	// Output:  aaaaa
 }

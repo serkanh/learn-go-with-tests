@@ -1,10 +1,9 @@
 package main
 
-// Sum calculates the total from an array of numbers
-func Sum(numbers [5]int) int {
+func Sum(arr [5]int) int {
 	sum := 0
-	for _, number := range numbers {
-		sum += number
+	for _, v := range arr {
+		sum += v
 	}
 	return sum
 }

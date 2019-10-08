@@ -1,22 +1,18 @@
 package main
 
-// Sum calculates the total from a slice of numbers
-func Sum(numbers []int) int {
+func Sum(nums []int) int {
 	sum := 0
-	for _, number := range numbers {
-		sum += number
+	for _, item := range nums {
+		sum += item
 	}
 	return sum
 }
 
-// SumAll calculates the respective sums of every slice passed in
-func SumAll(numbersToSum ...[]int) []int {
-	lengthOfNumbers := len(numbersToSum)
-	sums := make([]int, lengthOfNumbers)
+func SumAll(sliceofarrays ...[]int) []int {
 
-	for i, numbers := range numbersToSum {
-		sums[i] = Sum(numbers)
+	finalSlice := make([]int, len(sliceofarrays))
+	for i, item := range sliceofarrays {
+		finalSlice[i] = Sum(item)
 	}
-
-	return sums
+	return finalSlice
 }
